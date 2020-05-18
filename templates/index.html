@@ -1,0 +1,32 @@
+<html>
+<head>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+    <title>Chat</title>
+</head>
+
+<body>
+<h1 id="enter_message"></h1>
+<h2 id="room_message"></h2id>
+    <h3 id="error_message"></h3>
+
+
+    <form id="enter_name">
+        <input id="name" autofocus autocomplete="off" type="text" placeholder="Enter Name">
+        <input id='enter_name' type="submit">
+    </form>
+
+    <h5 id="current_room"></h5>
+    <form id="create_room">
+        <input id="chatroom" autofocus autocomplete="off" type="text" placeholder="Create New Room">
+        <input id='submit_chatroom' type="submit">
+    </form>
+
+    <button id="not_user" type="button">Not you? Click here!</button>
+
+    <ul id="chatrooms">
+
+    </ul>
+
+</body>
+</html>
