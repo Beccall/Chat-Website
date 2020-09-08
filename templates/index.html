@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+{% endblock %}
+
+{% block navbar %}
+    <h1 class="title">Chat, Chat, Chats!</h1>
+{% endblock %}
+
+{% block body %}
+    <h1 id="welcome_message"></h1>
+
+    <button id="not_user" type="button">Not you? Click here!</button>
+
+    <h5 id="current_room"></h5>
+
+    <p id="heading"></p>
+
+    <form id="enter_name">
+        <input id="name" autofocus autocomplete="off" type="text" placeholder="Enter Name">
+        <input id='submit_name' type="submit">
+    </form>
+
+    <form id="create_room">
+        <input id="chatroom" autofocus autocomplete="off" type="text" placeholder="Create New Room">
+        <input id='submit_chatroom' type="submit">
+    </form>
+{% endblock %}
+
+{% block otherrooms %}
+    {% for room in list_of_rooms %}
+        <a class="dropdown-item" href= {{ room['chatroom'] }}>#{{ room['chatroom'] }}</a>
+    {% endfor %}
+{% endblock %}

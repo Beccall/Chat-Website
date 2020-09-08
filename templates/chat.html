@@ -1,0 +1,40 @@
+{%  extends "layout.html" %}
+
+{% block head %}
+    <script src="{{ url_for('static', filename='chat.js') }}"></script>
+{% endblock %}
+
+
+{% block navbar %}
+    <h1 id="chatroom_name" class="title"></h1>
+    <button class="favorites" id="favorite">Add to Favorites</button>
+    <button class="favorites" id="unfavorite">Remove from Favorites</button>
+{% endblock %}
+
+{% block chatroomonly %}
+    {% block currentroom %}
+        <a class="nav-link active" href= {{ chat_room }}>{{ chat_room }}</a>
+    {% endblock %}
+{% endblock %}
+
+{% block otherrooms %}
+    {% for room in list_of_rooms %}
+        {% if room['chatroom'] != chat_room %}
+            <a class="dropdown-item" href= {{ room['chatroom'] }}>#{{ room['chatroom'] }}</a>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
+
+{% block body %}
+    <ul id="chats">
+    </ul>
+
+    <p id="chatroom_error"></p>
+
+    <form id="enter_chat">
+        <input id="chat" autofocus autocomplete="off" type="text" placeholder="Chat Here">
+        <input id="submit-chat" type="submit" value="Send">
+    </form>
+{% endblock %}
+

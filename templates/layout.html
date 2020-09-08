@@ -1,0 +1,62 @@
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+            integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+            integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="/static/style.css" rel="stylesheet">
+    {% block head %} {% endblock %}
+    <title>Chat</title>
+</head>
+
+
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        {% block navbar %} {% endblock %}
+    </nav>
+
+<div class="container">
+    <div class="row no-gutters" id="main-page">
+        <div class="col-4" id="side-bar">
+            <ul class="nav nav-pills flex-column" id="top-navbar">
+                <li class="nav-item" id="home_button">
+                    <a class="nav-link" id="home" href="/">Home</a>
+                </li>
+                {% block chatroomonly %}
+                    <li class="nav-item current">
+                        {% block currentroom %}
+                        {% endblock %}
+                    </li>
+                {% endblock %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                       aria-haspopup="true" aria-expanded="false">Chat Rooms</a>
+                    <div class="dropdown-menu">
+                        {% block otherrooms %}
+                        {% endblock %}
+                    </div>
+                </li>
+
+                <hr id="nav-line">
+                <ul id="favorite_channels">
+                    <li>Favorite Channels</li>
+                </ul>
+            </ul>
+        </div>
+        <div class="col-8 div-offset text-center">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
