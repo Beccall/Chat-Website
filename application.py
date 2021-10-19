@@ -7,6 +7,7 @@ import json
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 socketio = SocketIO(app)
+socketio.init_app(app, cors_allowed_origins="*")
 
 list_of_chats = []
 list_of_rooms = []
